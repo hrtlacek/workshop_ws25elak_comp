@@ -90,4 +90,6 @@ faust insatllieren. Die lib in apt ist aber veraltet. Wir kopieren via wget die 
 PIN 3 (SDA)
 PIN 5 (SCL)
 
-
+## Ardiono MIDI
+https://www.youtube.com/watch?v=IwfycC8rLos
+https://github.com/silveirago/DIY-Midi-Controller/blob/master/Code%20-%20c%C3%B3digo/en-DIY_midi_controller/en-DIY_midi_controller.ino
