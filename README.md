@@ -18,7 +18,7 @@
 Nachdem all das funktioniert hat sind wir auf den Raspi 'gesiedelt'. Wir mussten:
 - Den restlichen code für GPIO auslesen einfügen.
 - unser script und pd patch auf den raspi schicken (wenn wir nicht schon über samba auf dem raspi gearbeitet haben)
-- auch auf dem raspi das virtual environment anlegen und benötigte pakete installieren (python-osc und evtl GPIO)
+- auch auf dem raspi das virtual environment anlegen (und aktivieren! via `. /bin/activate` im entsprechenden folder)und benötigte pakete installieren (python-osc und evtl GPIO)
 - Wir haben überprüft welche GPIO pins verfügbar sind und einen nicht-verwendeten in unserem script benutzt.
 - Wir haben in python den ausgelesenen wert geprintet und mit einem kabel eine verbindung zu ground hergestellt. (Da wir einen sog. *pullup* widerstand verwendet haben hat unser python script immer `1` ausgespuckt. Wenn wir unseren GPIO mit *ground* verbunden haben haben wir in python `0` gesehen).
 - Nun standen wir noch vor der herausforderung dass pd schon lief und auch im falle eines crashes automatisch wieder gestartet wurde da thomas das so koniguriert hatte. (überprüfen von crashes und automatoscher neustart sehr empfehlenswert bei installationen). Wir hatten einige optionen dieses Problem zu umgehen, haben uns (ich hatte hier keinen überblick) denke ich dazu entschieden die entsprechende zeile aus dem `config` file auszukommentieren und den raspi neuzustarten. 
@@ -28,18 +28,18 @@ Nachdem all das funktioniert hat sind wir auf den Raspi 'gesiedelt'. Wir mussten
 
 Wir haben uns entschieden `byobu` zu verwenden um komfortabel mehere 'fenster' in unseren raspi zu bekommen. Es gibt auch hier zahlreiche varianten das zu machen, `byobu` ist eine sehr freundliche variante, `screen` und `tmux` sind sehr verbreitet wobei sich `screen` besonders anbietet, da es schon auf dem image in verwendung ist.
 
+Um pd zu starten haben wir im terminal `pd meinfile.pd` geschrieben. Da wir kein graphisches user interface (GUI) haben, mussten wir die `-nogui` flag verwenden. `pd -help` zeigt uns alle optionen an die wir steuern können, zb welche soundkarte verwendet wird, ob wir audio inputs deaktivieren wollen (`-noadc`) und ähnliches. 
+
+## Allgemein parktische/wichtige Linux Commands
+- `cd`, change directory um in ein anderes verzeichnis zu wechseln.
+- `pwd`, print working directory. In welchem verzeichnis bin ich gerade?
+- `ls`, list directory(vermutlich). Zeigt den inhalt des aktuellen verzeichnisses.
+- `mkdir bla` make directory. Macht einen neuen Ordner mit dem namen 'bla'.
+- `cat meinfile.txt` zeigt den inhalt eines files als text an.
+- `nano meinfile.txt` nano ist einer der vielen texteditoren. Lässt uns das file `meinfile.txt` editieren. 
+- `htop` und `top` ein commandline 'performance monitor'. zeigt uns cpu auslastung, prozesse etc an.
 
 
-
-
-
-# Raspi
-
-- .ssh/config : 
-`Host elakpi
-    HostName ipaddr
-    User elak
-`
 
 ## Pisound 
 
@@ -108,6 +108,15 @@ GPIO.cleanup()
 ```
 
 # Random Other notes
+
+# ssh config Beispiel
+
+- .ssh/config : 
+`Host elakpi
+    HostName ipaddr
+    User elak
+`
+
 
 ## PD
 Für `[oscunpack]` und `[udpreceive]`:
